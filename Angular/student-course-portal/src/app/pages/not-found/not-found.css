@@ -1,0 +1,31 @@
+.not-found-card {
+  text-align: center;
+  padding: 5rem 2rem;
+  max-width: 600px;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.not-found-card h1 {
+  font-size: 6rem;
+  line-height: 1;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ef4444 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.not-found-card h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.not-found-card p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  max-width: 400px;
+}

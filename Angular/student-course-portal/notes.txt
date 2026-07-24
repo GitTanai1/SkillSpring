@@ -1,0 +1,9 @@
+angular.json: Configures CLI workspace defaults, project builds, tests, and styles.
+tsconfig.json: Defines the base TypeScript compiler configurations for the entire workspace.
+tsconfig.app.json: Extends the base tsconfig.json with settings specific to building the Angular application.
+package.json: Lists the dependencies, devDependencies, and scripts for managing the Node package environment.
+src/main.ts: The main entry point of the application that bootstraps the root component (App) using appConfig.
+src/app/app.config.ts: Configures global application services and providers, such as routing and change detection.
+src/app/app.ts: The root component definition class (App) which houses main state and binds layout views.
+src/index.html: The single, root HTML file containing the index page and the <app-root> tag for rendering the SPA.
+Budgets Configuration (maximumWarning & maximumError): Control the warning and error thresholds for the compiled bundle sizes (e.g., initial bundle size warning at 500kB and error failure at 1MB) to prevent deployment of bloated application assets.

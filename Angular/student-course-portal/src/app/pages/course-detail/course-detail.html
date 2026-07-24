@@ -1,0 +1,60 @@
+<div class="detail-container">
+
+  <div *ngIf="isLoading" class="glass-card info-state">
+    <div class="spinner"></div>
+    <p>Loading course information...</p>
+  </div>
+
+
+  <div *ngIf="!isLoading && errorMsg" class="glass-card error-state">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="error-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+    <h3>Error occurred</h3>
+    <p>{{ errorMsg }}</p>
+    <a routerLink="/courses" class="btn btn-secondary">Back to Course List</a>
+  </div>
+
+
+  <article *ngIf="!isLoading && !errorMsg && course" class="glass-card detail-card">
+    <header class="detail-header">
+      <div class="detail-title-row">
+        <span class="detail-code">{{ course.code }}</span>
+        <span class="badge" [ngClass]="{
+          'badge-passed': course.gradeStatus === 'passed',
+          'badge-failed': course.gradeStatus === 'failed',
+          'badge-pending': course.gradeStatus === 'pending'
+        }">{{ course.gradeStatus }}</span>
+      </div>
+      <h2>{{ course.name }}</h2>
+    </header>
+
+    <div class="detail-body">
+      <div class="meta-row">
+        <div class="meta-block">
+          <div class="meta-label">Course Credits</div>
+          <div class="meta-value">{{ course.credits | creditLabel }}</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Course ID</div>
+          <div class="meta-value">#{{ course.id }}</div>
+        </div>
+      </div>
+
+      <div class="description-section">
+        <h3>Course Description</h3>
+        <p>
+          This course offers a comprehensive overview of <strong>{{ course.name }}</strong> ({{ course.code }}).
+          Students will engage in practical exercises, quizzes, and project-based assignments.
+          By the end of the term, students should have a deep understanding of core methodologies,
+          industry standards, and practical application vectors.
+        </p>
+      </div>
+    </div>
+
+    <footer class="detail-actions">
+      <a routerLink="/courses" class="btn btn-secondary">Back to List</a>
+      <button class="btn btn-primary" (click)="onEnrollToggle()">
+        {{ isEnrolled ? 'Unenroll From Course' : 'Enroll In Course' }}
+      </button>
+    </footer>
+  </article>
+</div>

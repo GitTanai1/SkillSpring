@@ -1,0 +1,128 @@
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.checkbox-group {
+  margin-top: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  margin-top: 0.25rem;
+}
+
+.array-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.array-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.array-header .form-label {
+  margin-bottom: 0;
+}
+
+.additional-courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dynamic-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.dynamic-row input {
+  grid-column: 1;
+}
+
+.dynamic-row .remove-btn {
+  grid-column: 2;
+  border-color: rgba(239, 68, 68, 0.2);
+  color: var(--color-failed);
+}
+
+.dynamic-row .remove-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: var(--color-failed);
+}
+
+.error-container-row {
+  grid-column: 1 / span 2;
+  min-height: 1rem;
+  margin-top: -0.5rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
+}
+
+.form-actions button {
+  flex: 1;
+}
+
+.success-banner {
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--color-passed);
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: scaleUp 0.3s ease;
+}
+
+.success-banner h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.success-banner p {
+  color: var(--text-main);
+  opacity: 0.85;
+}
+
+.pending-text {
+  color: var(--color-pending);
+  font-size: 0.825rem;
+  margin-top: 0.4rem;
+  display: block;
+}
+
+.error-container {
+  min-height: 1.25rem;
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

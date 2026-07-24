@@ -1,0 +1,41 @@
+<ng-container *ngIf="{ ids: enrolledIds$ | async } as enrolledState">
+  <div class="glass-card course-card"
+       [ngClass]="cardClasses(!!enrolledState.ids?.includes(course.id))"
+       [ngStyle]="{ 'border-left': '6px solid ' + (gradeStatus === 'passed' ? '#10b981' : gradeStatus === 'failed' ? '#ef4444' : '#f59e0b') }"
+       [appHighlight]="appHighlight"
+       (click)="onCardClick()">
+
+    <div class="card-header">
+      <span class="course-code">{{ course.code }}</span>
+      <div [ngSwitch]="gradeStatus">
+        <span *ngSwitchCase="'passed'" class="badge badge-passed">Passed</span>
+        <span *ngSwitchCase="'failed'" class="badge badge-failed">Failed</span>
+        <span *ngSwitchCase="'pending'" class="badge badge-pending">Pending</span>
+        <span *ngSwitchDefault class="badge">Unknown</span>
+      </div>
+    </div>
+
+    <h3 class="course-name">{{ course.name }}</h3>
+
+    <div class="course-details">
+      <span class="course-credits">{{ course.credits | creditLabel }}</span>
+      <span class="course-id">ID: {{ course.id }}</span>
+    </div>
+
+    <div *ngIf="isExpanded" class="card-expanded-content">
+      <p class="description-text">
+        This is a full core module. You must achieve at least 50% on assignments to pass.
+        It requires 10-12 hours of self-study per week.
+      </p>
+    </div>
+
+    <div class="card-actions">
+      <button class="btn btn-secondary" (click)="toggleExpand($event)">
+        {{ isExpanded ? 'Hide Details' : 'Show Details' }}
+      </button>
+      <button class="btn btn-primary" (click)="onEnrollClick($event, !!enrolledState.ids?.includes(course.id))">
+        {{ enrolledState.ids?.includes(course.id) ? 'Unenroll' : 'Enroll' }}
+      </button>
+    </div>
+  </div>
+</ng-container>

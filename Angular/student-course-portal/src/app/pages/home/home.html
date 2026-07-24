@@ -1,0 +1,44 @@
+<div class="home-container">
+
+  <header class="home-header">
+    <h1>Welcome to {{ portalName }}</h1>
+    <p class="subtitle">Manage your academic journey, browse courses, and track your progress in real-time.</p>
+  </header>
+
+
+  <section class="stats-grid">
+    <div class="glass-card stat-card">
+      <div class="stat-value">{{ coursesCount }}</div>
+      <div class="stat-label">Courses Available</div>
+    </div>
+    <div class="glass-card stat-card">
+      <div class="stat-value">{{ enrolledCount }}</div>
+      <div class="stat-label">Courses Enrolled</div>
+    </div>
+    <div class="glass-card stat-card">
+      <div class="stat-value">{{ gpa }}</div>
+      <div class="stat-label">Cumulative GPA</div>
+    </div>
+  </section>
+
+
+  <section class="actions-section glass-card">
+    <h2>Interactive Actions</h2>
+
+    <div class="action-block">
+      <p class="action-desc">Check active status and request course registration:</p>
+      <button class="btn btn-primary" [disabled]="!isPortalActive" (click)="onEnrollClick()">
+        Enroll Now
+      </button>
+      <div *ngIf="message" class="message-banner success">
+        {{ message }} redirecting you to course lists...
+      </div>
+    </div>
+
+    <div class="action-block">
+      <label class="form-label" for="search-input">Search courses (Two-Way Binding Demo):</label>
+      <input type="text" id="search-input" class="form-control" [(ngModel)]="searchTerm" placeholder="Type to search...">
+      <p *ngIf="searchTerm" class="live-search-text">Searching for: <strong>{{ searchTerm }}</strong></p>
+    </div>
+  </section>
+</div>

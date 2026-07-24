@@ -1,0 +1,46 @@
+<div class="courses-container">
+  <header class="page-header">
+    <h2>Explore Courses</h2>
+    <p class="subtitle">Search, view details, and enroll in your preferred courses.</p>
+  </header>
+
+
+  <section class="controls-section glass-card">
+    <div class="search-box">
+      <label class="form-label" for="search-box-input">Filter by Course Name or Code:</label>
+      <input type="text" id="search-box-input" class="form-control" [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange()" placeholder="Search CS101, Web Development...">
+    </div>
+  </section>
+
+
+  <div *ngIf="isLoading$ | async" class="glass-card loading-state">
+    <div class="spinner"></div>
+    <p>Loading course catalogue, please wait...</p>
+  </div>
+
+
+  <ng-container *ngIf="!(isLoading$ | async)">
+    <div *ngIf="((filteredCourses$ | async) || []).length > 0; else noCourses" class="courses-grid">
+      <app-course-card
+        *ngFor="let c of filteredCourses$ | async; let i = index; trackBy: trackByCourseId"
+        [course]="c"
+        (enrollRequested)="onEnroll($event)"
+        (cardClicked)="onCardClicked($event)">
+      </app-course-card>
+    </div>
+
+
+    <ng-template #noCourses>
+      <div class="glass-card empty-state">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="empty-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path><path d="M6 6h10M6 10h10"></path></svg>
+        <h3>No courses found</h3>
+        <p>We couldn't find any courses matching "{{ searchTerm }}". Try adjusting your search query.</p>
+      </div>
+    </ng-template>
+  </ng-container>
+
+
+  <div *ngIf="selectedCourseId" class="selected-indicator success">
+    <p>Successfully processed request. Selected Course ID: <strong>{{ selectedCourseId }}</strong></p>
+  </div>
+</div>
