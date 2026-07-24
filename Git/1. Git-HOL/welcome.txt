@@ -1,0 +1,2 @@
+Welcome to Git Hands-on Lab!
+This is a sample text file created to demonstrate the basic workflow of Git.

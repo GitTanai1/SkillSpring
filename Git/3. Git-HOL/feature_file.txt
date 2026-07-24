@@ -1,0 +1,2 @@
+This is a feature file created in GitNewBranch.
+It contains the experimental code and logs to be merged into master.
